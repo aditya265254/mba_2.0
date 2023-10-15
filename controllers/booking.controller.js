@@ -76,4 +76,4 @@ module.exports  = {
     getBookingById,
     updateBooking,
     createBooking,
-}
+} 
