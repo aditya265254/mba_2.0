@@ -15,6 +15,10 @@ mongoose.connect(connectionUrl, { dbName: DB_NAME })
    .then(() => console.log("Connected to mongodb sucessfully"))
    .catch((ex) => console.log("error while connecting to mongodb", ex));
 
+app.get('/', (req, res) => {
+   res.send("App is running")
+})
+
 require("./routes/auth.route")(app);
 require("./routes/booking.route")(app);
 require("./routes/movie.route")(app);
