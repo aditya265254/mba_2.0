@@ -2,7 +2,7 @@ const { getAllBookings, getBookingById, createBooking, updateBooking } = require
 const { verifyToken } = require("../middlewares/auth.Jwt");
 
 module.exports = function (app)  {
-    app.get("mba/api/v1/bookings",[verifyToken], getAllBookings);
+    app.get("/mba/api/v1/bookings",[verifyToken], getAllBookings);
     app.get("/mba/api/v1/bookings/:id",[verifyToken], getBookingById);
     app.post("/mba/api/v1/bookings",[verifyToken], createBooking);
     app.put("/mba/api/v1/bookings/:id",[verifyToken], updateBooking);
