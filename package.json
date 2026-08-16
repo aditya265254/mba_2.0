@@ -2,9 +2,11 @@
   "name": "movie-booking-app-2.0",
   "version": "1.0.0",
   "description": "Movie booking application using MongoDB, Express and Node",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "devStart": "nodemon index.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "devStart": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "akash.aditya001@gmail.com",
@@ -12,8 +14,12 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "dotenv": "^17.4.2",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

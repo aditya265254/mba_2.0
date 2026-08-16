@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -28,7 +29,7 @@ const userSchema = new mongoose.Schema({
     userType: {
         type: String,
         required: true,
-        default: "COSTUMER",
+        default: "CUSTOMER",
     },
     createdAt: {
         type: Date,
@@ -41,6 +42,15 @@ const userSchema = new mongoose.Schema({
     }
 });
 
- const User = mongoose.model("User",userSchema);
+userSchema.pre('save', function (next) {
+    if (this.isModified('password')) {
+        if (!this.password.startsWith('$2a$') && !this.password.startsWith('$2b$') && !this.password.startsWith('$2y$')) {
+            this.password = bcrypt.hashSync(this.password, 10);
+        }
+    }
+    next();
+});
 
- module.exports = User;
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
